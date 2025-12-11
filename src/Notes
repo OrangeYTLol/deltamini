@@ -1,0 +1,222 @@
+        NOTES
+
+        ----Placeholders----
+
+        #  = int or double
+        "" = string
+        variable = any data type
+        code = your code
+        name = any name
+        return-type = data type of the value that gets returned; "void" can be used if no value is returned
+        index = index
+
+        ----OPERATORS----
+        + - addition
+        - - subtraction
+        * - multiplication
+        / - division
+        % - modulus (finds remainder)
+        > - greater than
+        < - less than
+        >= - greater than or equal to
+        <= - less than or equal to
+        == - is the same as
+        != - is not the same as
+        && - and
+        || - or
+        ! - not
+
+        ----STRING METHODS----
+        .length() - length of string
+        .charAt(#) - finds the character at a certain index
+        .indexOf("") - finds the index of the first occurrence of a character
+        .lastIndexOf("") - finds the index of the last occurrence of a character
+        .toUpperCase() - makes a string all uppercase
+        .toLowerCase() - makes a string all lowercase
+        .trim() - removes extra whitespace
+        .replace("", "") - replaces syntax 1 with syntax 2
+        .isEmpty() - if the string is empty or not
+        .contains("") - if the string contains the syntax
+        .equals("") - if a string is equivalent to the syntax (NOT CASE SENSITIVE)
+        .equalsIgnoreCase("") - if a string is equivalent to the syntax
+        .substring(#,#) - extracts out characters at indices specified in syntax (If second index is not specified it will go until the end)
+
+        ----TERNARY OPERATOR----
+        variable = (condition) ? ifTrue : ifFalse
+        EX:
+        String passOrFail = (score >= 60) ? "PASS" : "FAIL";
+
+        shortcut for single if/else statements
+        ifTrue - resulting value if the condition is true
+        ifFalse - resulting value if the condition is false
+
+        ----ENHANCED SWITCHES----
+        switch(variable){
+            case variable, variable -> code
+            default -> code
+        }
+        EX:
+        switch(day){
+            case "Monday", "Tuesday" -> System.out.println("It's a weekday.");
+            case "Saturday", "Sunday" -> System.out.println("It's the weekend.");
+            default -> System.out.println("Not a valid day");
+        }
+
+        ----FOR LOOPS----
+        for(variable;condition;step){
+            code
+        }
+        EX:
+        for(int i = 0; i < 10; i++){
+            System.out.println(i + 1);
+
+        }
+
+        ----SLEEPING----
+        Thread.sleep(milliseconds)
+        EX:
+        Thread.sleep(1000);
+
+        REQUIRES: public static void main(String[] args) throws InterruptedException {}
+
+        ----BREAK & CONTINUE----
+        break; - stops the loop
+        continue; - continues the loop without finishing the current iteration
+
+        ----METHODS----
+        return-type name(){
+            code
+        }
+        EX:
+        static void chaos(){
+            System.out.println("Chaos, Chaos!");
+        }
+        chaos()
+
+        methods are called using their name + ()
+        if a method is called in a different, "static" method it is required to also be static
+        methods can share the same name or parameters, but NOT both
+        a method can receive a varying amount of parameters if an ellipsis is added. EX: static void add(int... numbers){}
+
+        ----ARRAYS----
+        variable[] name = {}
+        EX:
+        char[] chaos = {'c', 'h', 'a', 'o', 's'};
+
+        MUST only contain one data type
+        to get the value at a certain index of an array, you must do:
+        name[index]
+        EX:
+        chaos[4];
+
+        the above would output 's'
+        string method ".length()" is compatible with arrays
+        to create an empty array you must do "new variable[length]" instead of "{}" EX: String[] chaos = new String[5];
+        array lengths may NOT change after the array is declared
+        --2D Arrays--
+        created similar to 1D arrays, except with 2 sets of brackets
+        2D arrays only contain regular arrays and follow the same data type rule of 1D arrays
+        variable[][] = {}
+        EX:
+        char[] jevil = {'j', 'e', 'v', 'i', 'l'};
+        char[] spamton = {'s', 'p', 'a', 'm', 't', 'o', 'n'};
+
+        char[][] chaos = {jevil, spamton};
+
+        values are referenced using 2 indices EX; chaos[1][2]
+
+        --Arrays Class--
+        Arrays.sort(array) - sorts an array by alphabetical or chronological order
+        Arrays.fill(array, variable) - replaces contents of an array with a specified variable
+
+        ----OBJECTS----
+        objects can take the attributes and behaviors of a class
+        class name = new class()
+        EX:
+        Human person1 = new Human();
+
+        inherited attributes can be referenced using object.variable
+        EX:
+        person1.gender
+
+        objects can also inherit methods (behaviors) and can execute those behaviors using object.method()
+        inherited methods do not need to be static to be referenced in a static method
+        EX:
+        person1.sit()
+
+        inherited methods may be overwritten if it doesn't fit the child object
+        it's recommended to add @Override above override methods for organization
+
+        --ToString--
+        public String toString(){
+            return ""
+        }
+        EX:
+        @Override
+        public String toString(){
+            return this.name + " " + this.age + " " + this.gender;
+        }
+
+        overrides the toString method to print useful information instead of a memory address
+
+        --Constructors--
+        inherited attributes can be customized when declaring the object
+        EX:
+        public class Main {
+            public static void main(String[] args) {
+                Human person1 - new Human("Lindsey", 16, "Female");
+            }
+
+        }
+
+        public class Human {
+            String name;
+            int age;
+            String gender;
+
+            Human(String name, int age, String gender){
+                this.name = name;
+                this.age = age;
+                this.gender = gender;
+            }
+
+        }
+
+        Constructors may be overloaded the same way as methods
+
+        --Object Arrays--
+        an array that holds objects of the same parent class
+        class[] name = {}
+        EX:
+        Human[] people = {person1, person2, person3};
+
+        ----STATIC----
+        modifies a variable or method to make it belong to the class vs the object
+        EX:
+        static int age;
+
+        if the above example were put in a object and the object had children, the children would NOT have a copy of this variable
+        this works the same with methods
+        it's recommended to access a static variable or method through the class rather than the object; Human.population vs person1.population
+
+        ----INHERITANCE----
+        a way to easily transfer attributes and methods between classes
+        public class name extends parent-class{}
+        EX: public class Female extends Human{
+
+        }
+
+        --Super--
+        super(variables...)
+        EX:
+        super(name, age, gender);
+        imports attributes from a parent class
+
+        ----ABSTRACTION----
+        a way to stop classes from having child objects
+        other classes can still inherit from abstract classes
+        public abstract class name {}
+        EX:
+        public abstract class Animal {}
+
+        abstracted methods will be required to be overwritten in all child classes
